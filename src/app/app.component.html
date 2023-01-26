@@ -1,7 +1,12 @@
-<div class="container p-2">
+<div class="container-sm p-2 h-100">
   <div class="row">
-    <div class="col-sm">
-      <app-article-list></app-article-list>
+    <div class="col-12 col-md-6 my-3">
+      <h3 class="text-center">台灣即時新聞</h3>
+      <app-article-list [country]="'tw'"></app-article-list>
+    </div>
+    <div class="col-12 col-md-6 my-3">
+      <h3 class="text-center">U.S. News</h3>
+      <app-article-list [country]="'us'"></app-article-list>
     </div>
   </div>
 </div>

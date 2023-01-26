@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NewsApiService, NewsApiResonse, Article } from '../news-api.service';
 
 
@@ -8,18 +8,24 @@ import { NewsApiService, NewsApiResonse, Article } from '../news-api.service';
   styleUrls: ['./article-list.component.css'],
 })
 export class ArticleListComponent {
+  @Input() country!: string
+
   articles: Article[] = [];
   currentPage = 1;
   pageSize = 10;
   totalPages!: number;
 
   constructor(private newsApi: NewsApiService) {
+  }
+
+  ngOnInit(){
+    console.log('this.country :>> ', this.country);
     this.getTopHeadlines();
   }
 
   getTopHeadlines() {
     this.newsApi
-      .getTopHeadlines(this.currentPage, this.pageSize)
+      .getTopHeadlines(this.currentPage, this.pageSize, this.country)
       .subscribe((data: NewsApiResonse) => {
         // console.log('data :>> ', data);
         this.articles = data.articles;

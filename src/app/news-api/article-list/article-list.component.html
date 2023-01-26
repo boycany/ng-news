@@ -1,8 +1,10 @@
-<h3 class="text-center">台灣即時新聞</h3>
-<h6 class="text-center text-muted">- 第 {{currentPage}} 頁 -</h6>
+
+<h6 class="text-center text-muted" *ngIf="country === 'tw'">- 第 {{currentPage}} 頁 -</h6>
+<h6 class="text-center text-muted" *ngIf="country === 'us'">- page {{currentPage}} -</h6>
+
 <div class="list-group">
     <a *ngFor="let article of articles" 
-        class="list-group-item list-group-item-action" 
+        class="list-group-item list-group-item-action text-truncate" 
         [href]="article.url"
         target="_blank"
     >
